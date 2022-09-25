@@ -1,0 +1,1 @@
+export const reachingGoalSrc = "https://media-exp1.licdn.com/dms/image/C5612AQGwICgFfTRQjA/article-cover_image-shrink_600_2000/0/1520042063261?e=1632960000&v=beta&t=HPeiYhUj6WIxjIk0qc6anUQJ1t17RKkB6LQjHMXMcX0"
