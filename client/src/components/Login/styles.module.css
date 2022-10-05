@@ -1,3 +1,41 @@
+@media screen and (max-width: 800px) {
+	.navbarlogin img {
+		width: 52vw !important;
+		height: 26vh !important;
+	}
+	.form_container h1 {
+		font-size: 54px !important;
+		margin-top: 0;
+	}
+	.form_container input{
+		outline: none;
+		border: none;
+		width: 581px !important;
+		padding: 15px;
+		border-radius: 10px;
+		background-color: #edf5f3;
+		margin: 5px 0;
+		font-size: 25px !important;
+	}
+	.form_container btn{
+		background-color: #4faddfff;
+		color: white;
+		margin-top: 56px !important;
+		font-size: 2.3rem !important;
+		width: 17rem !important;
+	}
+	.login_form_container{
+		margin-top: 19rem !important;
+	}
+}
+
+.navbarlogin img {
+	width: 10vw ;
+	height: 15vh ;
+
+
+}
+
 .login_container {
 	width: 100%;
 	min-height: 100vh;
@@ -83,7 +121,7 @@
 	border: none;
 	outline: none;
 	padding: 12px 0;
-	background-color: white;
+	background-color: #4faddfff;
 	border-radius: 20px;
 	width: 180px;
 	font-weight: bold;
@@ -92,7 +130,7 @@
 }
 
 .green_btn {
-	background-color: #3bb19b;
+	background-color: #4faddfff;
 	color: white;
 	margin: 10px;
 }
