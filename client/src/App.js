@@ -9,6 +9,9 @@ import ProccessStart from "./components/proccess-start/ProccessStart";
 // components
 import Main from "./components/UI/Main";
 
+//Gotologin
+import Gotologin from "./components/UI/gotologin";
+
 import Login from './components/Login/index'
 
 import { UpdateDataProvider } from "./context/UpdateDataContext";
@@ -27,7 +30,7 @@ function App(props) {
     else {
       localStorage.removeItem('token');
       localStorage.removeItem('time');
-      console.log('Sorry, You cant Access');
+      
       setAccess(false)
     }
   }
@@ -48,7 +51,9 @@ function App(props) {
             {user && access && <Route exact path='/'>
               <Main />
             </Route>}
-
+            {!user && <Route exact path='/'>
+              <Gotologin />
+            </Route>}
             <Route exact path="/login">
               <Login />
             </Route>

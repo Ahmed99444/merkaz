@@ -32,25 +32,33 @@ const Login = () => {
 			})
 
 			console.log(`Send request`);
-			// 
-			localStorage.setItem("time", res.timestamp);
+			
+			if(res.status == 200)
+			{
+				console.log(res.status);
+				localStorage.setItem("time", res.timestamp);
+			}
+			else{
+				console.log(res.status);
+			}
+			
 
 
-			const dateThen = new Date(res.timestamp);
-			const dateNow = new Date();
+			// const dateThen = new Date(res.timestamp);
+			// const dateNow = new Date();
 
-			const differenceDates = dateNow.getTime() - dateThen.getTime();
-			if (differenceDates > 82800000) {
-				throw Error()
-			}
-			else {
-				localStorage.setItem("token", res.data);
-				history.push("/main");
-			}
-			// history.push("/main");
-			if (differenceDates) {
-				throw error()
-			}
+			// const differenceDates = dateNow.getTime() - dateThen.getTime();
+			// if (differenceDates > 82800000) {
+			// 	throw Error()
+			// }
+			// else {
+			// 	localStorage.setItem("token", res.data);
+			// 	history.push("/main");
+			// }
+			// // history.push("/main");
+			// if (differenceDates) {
+			// 	throw error()
+			// }
 
 
 			//44605766
