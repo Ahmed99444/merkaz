@@ -52,9 +52,9 @@ function App(props) {
             <Route exact path="/login">
               <Login />
             </Route>
-            <Route path="/signup">
+            {/* <Route path="/signup">
               <ProccessMain />
-            </Route>
+            </Route> */}
             <Route path="/sadna">
               <ProccessStart />
             </Route>

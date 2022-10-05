@@ -11,18 +11,25 @@ const Login = () => {
 	let history = useHistory();
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
+	
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
+		
 	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "https://hrcclient.herokuapp.com/api/auth";
-			const { data: res } = await axios.post(url, data);
+			const email = data.email
+			const password = data.password
+			const url = "http://localhost:5000/api/auth";
+			const { data: res } = await axios.post(url, null, { params: {
+				email,
+				password
+			  }})
 
-
+				console.log(`Send request`);
 			// 
 			localStorage.setItem("time", res.timestamp);
 
@@ -85,7 +92,7 @@ const Login = () => {
 						{error && <div className={styles.error_msg}>{error}</div>}
 						
 							<button type="submit" className={styles.green_btn}>
-								המשך >
+								המשך
 							</button>
 				
 
