@@ -20,7 +20,7 @@ export default function ProccessMain() {
   let history = useHistory();
 
   // check for auth and redirect if true
-  useEffect(() => {
+  useEffect(async() => {
     firebase.default.auth().currentUser && redirectToSadna();
   });
 

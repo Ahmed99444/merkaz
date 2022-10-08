@@ -51,7 +51,7 @@ export default function About() {
         ></iframe>
       </VideoContainer>
       <Link
-          to="/sadna"
+          to="/signup"
           style={{ color: "inherit", textDecoration: "inherit" }}
         >
           <Button>בואו נתחיל</Button>

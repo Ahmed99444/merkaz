@@ -27,7 +27,7 @@ export default function LetsStart() {
         </span>
 
         <Link
-          to="/sadna"
+          to="/signup"
           style={{ color: "inherit", textDecoration: "inherit" }}
         >
           <Button>בואו נתחיל</Button>

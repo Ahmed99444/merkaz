@@ -18,26 +18,34 @@ import { UpdateDataProvider } from "./context/UpdateDataContext";
 
 function App(props) {
   const [access, setAccess] = useState(false)
-  const user = localStorage.getItem("token");
-  const myTime = () => {
+  var user = localStorage.getItem("token");
+  if (user == null) {
+    setAccess(false)
+  }
+  else if (user.includes('Bearer')) {
+
 
     const dateThen = new Date(localStorage.getItem("time"));
     const dateNow = new Date();
     const differenceDates = dateNow.getTime() - dateThen.getTime();
+
     if (differenceDates < 82800000) {
+
       setAccess(true);
+
     }
     else {
       localStorage.removeItem('token');
       localStorage.removeItem('time');
-      
       setAccess(false)
+
     }
   }
-  useEffect(() => {
-    myTime();
-    console.log('He can Access');
-  });
+  else {
+    console.log(`No thing`);
+    setAccess(false)
+  }
+
 
   return (
 
@@ -48,23 +56,35 @@ function App(props) {
 
           <Switch>
 
-            {user && access && <Route exact path='/'>
+            {access && <Route exact path='/'>
               <Main />
             </Route>}
             {!user && <Route exact path='/'>
-              <Gotologin />
+              <Login />
+            </Route>}
+            {access && <Route exact path='/login'>
+              <Main />
             </Route>}
             <Route exact path="/login">
               <Login />
             </Route>
-            <Route path="/signup">
+            {!access && <Route path="/signup">
+              <Login />
+            </Route>}
+            {access && <Route path="/signup">
               <ProccessMain />
-            </Route>
-            <Route path="/sadna">
+            </Route>}
+            {access && <Route path="/sadna">
               <ProccessStart />
-            </Route>
-            {user && <Route path="/main">
+            </Route>}
+            {!access && <Route path="/sadna">
+              <Login />
+            </Route>}
+            {access && <Route path="/main">
               <Main />
+            </Route>}
+            {!access && <Route path="/main">
+              <Login />
             </Route>}
 
             {/* <Route path="/video/1">

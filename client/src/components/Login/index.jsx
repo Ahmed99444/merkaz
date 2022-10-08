@@ -11,6 +11,7 @@ const Login = () => {
 	let history = useHistory();
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
+	const [access, setAccess] = useState(false)
 
 
 	const handleChange = ({ currentTarget: input }) => {
@@ -24,53 +25,40 @@ const Login = () => {
 			const email = data.email
 			const password = data.password
 			const url = "http://localhost:5000/api/auth";
-			const { data: res } = await axios.post(url, null, {
+			const response = await axios.post(url, null, {
 				params: {
 					email,
 					password
 				}
 			})
 
-			console.log(`Send request`);
+			const json = await response
 			
-			if(res.status == 200)
+			if(json.status == 200)
 			{
-				console.log(res.status);
-				localStorage.setItem("time", res.timestamp);
+				await console.log(json.data.token);
+				await localStorage.setItem('token',json.data.token)
+				await localStorage.setItem("time", json.data.timestamp);
+				
+				await history.push("/main");
+				// await window.location.reload(false)
 			}
-			else{
-				console.log(res.status);
+			else if(json.status == 404){
+				
+				console.log(`remove`);
+				await localStorage.clear()
+				await console.log(json.data.message);
+				await setError(error.json.data.message);
+				
 			}
 			
-
-
-			// const dateThen = new Date(res.timestamp);
-			// const dateNow = new Date();
-
-			// const differenceDates = dateNow.getTime() - dateThen.getTime();
-			// if (differenceDates > 82800000) {
-			// 	throw Error()
-			// }
-			// else {
-			// 	localStorage.setItem("token", res.data);
-			// 	history.push("/main");
-			// }
-			// // history.push("/main");
-			// if (differenceDates) {
-			// 	throw error()
-			// }
-
-
-			//44605766
-
-			// window.location = "/main";
 		} catch (error) {
 			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
+				error.json &&
+				error.json.status >= 400 &&
+				error.json.status <= 500
 			) {
-				setError(error.response.data.message);
+				setError(error.json.data.message);
 			}
 		}
 	};
